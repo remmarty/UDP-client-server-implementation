@@ -38,8 +38,8 @@ int main()
 
     sendto(sockfd, message, strlen(message), 0, (struct sockaddr *)&server_address, sizeof(server_address));
 
-    int addrlen = sizeof(struct sockaddr_in);
-    if (recvfrom(sockfd, &buffer, sizeof(buffer), 0, (struct sockaddr *)&server_address, &addrlen) == -1)
+    int addrlen = sizeof(server_address);
+    if (recvfrom(sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&server_address, &addrlen) == -1)
     {
         perror("Received message error");
         return -1;
